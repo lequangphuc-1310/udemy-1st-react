@@ -1,17 +1,22 @@
 import React from 'react'
 
-class UserInfo extends React.Component {
+class AddUserInfo extends React.Component {
     state = {
-        name: 'rac',
+        name: '',
         address: 'bai rac',
-        age: 18
+        age: ''
     }
     handleOnChangeInput = e => {
         this.setState({ name: e.target.value })
     }
     handleSubmit = e => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.handleAddUser({
+            id: Math.floor(Math.random() * 100 + 1) + '-random',
+            name: this.state.name,
+            age: this.state.age
+        })
+
     }
     handleOnChangeAge = e => {
         this.setState({ age: e.target.value })
@@ -19,8 +24,6 @@ class UserInfo extends React.Component {
     render() {
         return (
             <>
-                <div> Hello {this.state.name}, your age is {this.state.age}</div>
-                <button onClick={e => { this.handleClick(e) }}>Click me</button>
                 <form onClick={e => { this.handleSubmit(e) }}>
                     <label>Enter ur name: </label>
                     <input type='text' value={this.state.name} onChange={(e) => { this.handleOnChangeInput(e) }} /><br />
@@ -33,4 +36,4 @@ class UserInfo extends React.Component {
     }
 }
 
-export default UserInfo
+export default AddUserInfo
