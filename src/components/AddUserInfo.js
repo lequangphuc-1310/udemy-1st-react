@@ -24,12 +24,12 @@ class AddUserInfo extends React.Component {
     render() {
         return (
             <>
-                <form onClick={e => { this.handleSubmit(e) }}>
+                <form >
                     <label>Enter ur name: </label>
                     <input type='text' value={this.state.name} onChange={(e) => { this.handleOnChangeInput(e) }} /><br />
                     <label>Enter ur age: </label>
                     <input type='text' value={this.state.age} onChange={(e) => { this.handleOnChangeAge(e) }} /><br />
-                    <button >Submit</button>
+                    <button onClick={e => { this.handleSubmit(e) }}>Submit</button>
                 </form>
             </>
         )
