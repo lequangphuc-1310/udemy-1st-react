@@ -16,15 +16,22 @@ class DisplayInfo extends React.Component {
                     <button onClick={() => { this.handleShowHide() }}>{this.state.condition ? 'Hide' : "Show"}</button>
                 </div>
                 {this.state.condition &&
-                    <div>{listUser.map(item => {
-                        return (
-                            <div key={item.id} className={+item.age > 18 ? 'green' : 'red'}>
-                                <div>My nem is: {item.name}</div>
-                                <div>My age is: {item.age}</div>
-                            </div>
-                        )
-                    })}
-                    </div>
+                    <>
+                        {listUser.map(item => {
+                            return (
+                                <div key={item.id} className={+item.age > 18 ? 'green' : 'red'}>
+                                    <div>
+                                        <div>My nem is: {item.name}</div>
+                                        <div>My age is: {item.age}</div>
+                                    </div>
+                                    <div>
+                                        <button onClick={() => { this.props.handleDeleteUser(item.id) }}>&times;</button>
+                                    </div>
+
+                                </div>
+                            )
+                        })}
+                    </>
                 }
 
             </div>
