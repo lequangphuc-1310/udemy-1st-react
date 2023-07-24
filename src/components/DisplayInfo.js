@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './DisplayInfo.scss'
 import logo from './../logo.svg'
 // class DisplayInfo extends React.Component {
@@ -48,8 +48,17 @@ const DisplayInfo = (props) => {
 
     const [isShowHide, setIsShowHide] = useState(false)
     const handleShowHide = () => setIsShowHide(!isShowHide)
+
+    useEffect(() => {
+        if (listUser.length == 0) {
+            console.log('deleted all')
+        }
+        console.log('useEffect()')
+    }, [listUser])
+
     return (
         <div className='display-info-container'>
+            {console.log('render phase')}
             <img src={logo} /><br />
             <button onClick={handleShowHide}>{isShowHide === true ? 'Hide' : 'Show'}</button>
             {isShowHide &&
